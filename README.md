@@ -18,10 +18,10 @@ OpenMOLE workflows for running dHCP structural pipeline.
 - fMRI imaging (compressed NifTI format;that is  .ni.gz)
 
 ## Contributors
-- [Jianliang Gao](https://github.com/jianlianggao) (Imperial College London)
+- [Jonathan](https://github.com/jopasserat) and [Jianliang Gao](https://github.com/jianlianggao) (Imperial College London)
 
 ## Container Contributor
-- [John Cupitt] (Imperial College London)
+- [John Cupitt](https://github.com/jcupitt) (Imperial College London)
 
 ## Website
 - https://github.com/BioMedIA/dhcp-structural-pipeline
