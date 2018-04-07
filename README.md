@@ -33,9 +33,10 @@ extract OpenMOLE files into `openmole` directory. Then enter the `openmole` fold
 
 - You may need OpenJDK to support OpenMOLE in your Ubuntu OS. If that is the case, you can run `sudo apt-get install openjdk-8-jre` to install OpenJDK.
 ## Usage Instructions
-- Step 1: run `structure_pipeline_v5_pre.oms` to collect Subject IDs, session IDs and age of scans. A .csv file will be generated and stored in the input imaging data
+- Step 1: Upload the .oms and .py files into OpenMOLE.
+- Step 2: run `structure_pipeline_v5_pre.oms` to collect Subject IDs, session IDs and age of scans. A .csv file will be generated and stored in the input imaging data
 directory.
-- Step 2: run `structure_pipeline_v5_proc.oms` to execute dHCP structural pipeline to process all found imaging data.
+- Step 3: run `structure_pipeline_v5_proc.oms` to execute dHCP structural pipeline to process all found imaging data.
 ## Help and Documentation
 - Please take your time to follow the tutorial if you are new to OpenMOLE:
 - https://next.openmole.org/GUI+guide.html
