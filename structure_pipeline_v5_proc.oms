@@ -1,0 +1,56 @@
+import java.nio.file.Path
+
+val subjectPath = Val[Path]
+val subjectFilename = Val[String]
+
+val sessionID = Val[String]
+val age = Val[String]
+val subjectID = Val[String]
+val T1para = Val[String]
+val T2para = Val[String]
+
+
+val threads = 8
+
+val dataLoc = "/data/jgao/work/openMOLE/data1"
+
+val container =
+  ContainerTask(
+    "biomedia/dhcp-structural-pipeline:latest",
+    s"""bash -c "cd /usr/src/structural-pipeline; ./dhcp-pipeline.sh $${subjectID} $${sessionID} $${age} -d /data/results $${T1para} $${T2para} -t $threads""""
+  ) set (
+    //resources += workDirectory / "matrix.py",
+    hostFiles += (dataLoc, "/data"),
+    (inputs, outputs) += (age, subjectID, sessionID, T1para, T2para),
+    //inputs += (age, subjectID, sessionID),
+    //outputs += (age, subjectID, sessionID),  // eqv to (inputs, outputs) += ()
+  )
+  
+
+// extracting columns from .csv file
+val s = CSVSampling("/data/jgao/work/openMOLE/data1/dataCollection.csv") set (
+  columns += ("subject_ID", subjectID ),
+  columns += ("session_ID", sessionID ),
+  columns += ("scan_age", age),
+  columns += ("T1_para", T1para),
+  columns += ("T2_para", T2para),
+  //columns += ("colFileName", "/path/of/the/base/dir/", f),
+  // comma ',' is the default separator, but you can specify a different one using
+  separator := ','
+)
+
+
+//explo -< (container3 hook CopyFileHook(resultFile, workDirectory / "results/${subjectFilename.dropRight(4)}.csv"))
+
+// DirectSampling works
+DirectSampling (
+  sampling = s,
+  evaluation = container
+)
+
+
+//following line doesn't work
+//(explo -< container1) -- (explo -< container2)
+  
+//(explo hook ToStringHook()) -- (container hook ToStringHook())
+//explo hook ToStringHook()
