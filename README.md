@@ -4,16 +4,16 @@ Version: 1.05
 ## Short Description
 OpenMOLE workflows for running dHCP structural pipeline.
 ## Description
-
+Funded by ERC, [dHCP](http://www.developingconnectome.org/) project is led by King’s College London, Imperial College London and Oxford University
+and aims to make major scientific progress by creating the first 4-dimensional connectome of early life. The containerized dHCP structural pipeline
+is scheduled by OpenMOLE to utilize any scale of cluster or cloud platform to performs structural analysis of neonatal brain MRI images (including T1 and T2).
 
 ## Key features
 - CSV sampling
 - Tasks
 - Docker Container
-## Functionality
-- 
-## Approaches
-- 
+- Structural analysis of brain MRI images
+
 ## Instrument Data Types
 - fMRI imaging (compressed NifTI format;that is  .ni.gz)
 
@@ -36,3 +36,8 @@ extract OpenMOLE files into `openmole` directory. Then enter the `openmole` fold
 directory.
 - Step 2: run `structure_pipeline_v5_proc.oms` to execute dHCP structural pipeline to process all found imaging data.
 ## Help and Documentation
+- Please take your time to follow the tutorial if you are new to OpenMOLE:
+- https://next.openmole.org/GUI+guide.html
+- https://next.openmole.org/Getting+started.html
+- https://next.openmole.org/Models.html
+- http://demo.openmole.org/app
