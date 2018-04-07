@@ -1,3 +1,4 @@
+![Logo](dHCP_openmole.gif)
 # dHCP OpenMOLE workflow for structural pipeline 
 Version: 1.05
 
