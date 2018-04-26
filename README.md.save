@@ -1,0 +1,27 @@
+# dHCP OpenMOLE workflow for structural pipeline 
+Version: 1.05
+## Short Description
+
+## Description
+
+
+## Key features
+- 
+## Functionality
+- 
+## Approaches
+- 
+## Instrument Data Types
+- Nifti MRI imaging
+## Contributors
+- [Jianliang Gao](https://github.com/jianlianggao) (Imperial College London)
+## Website
+
+## Installation
+- Download the latest OpenMOLE package from next.openmole.org (https://next.openmole.org/openmole.tar.gz) and run `tar xvzf openmole.tar.gz` to 
+extract OpenMOLE file into openmole directory. Then enter the `openmole` folder and run `./openmole` (if you are using Ubuntu). 
+
+- You may need `OpenJDK` to support OpenMOLE.
+## Usage Instructions
+
+## Help and Documentation

@@ -1,0 +1,32 @@
+// for running on Slurm cluster
+import java.nio.file.Path
+
+val subjectPath = Val[Path]
+val subjectFilename = Val[String]
+
+
+val dataLoc = "/vol/biomedic/users/jgao/dhcp/data"
+
+
+val container3 =
+  ContainerTask(
+    "python:3.6-stretch",
+    //s"""bash -c "python -c 'print("$${subjectPath}")';  python -c 'print("$${T1WniftiPath}")'; python -c 'print("$${T2WniftiPath}")'; python matrix.py $${subjectPath}";  """,
+    """ python matrix_5.py /data/${subjectFilename.dropRight(13)}/${subjectFilename} ${subjectFilename.dropRight(13)} /data/dataCollection.csv """,
+    install = Seq("pip install numpy")
+  )  set (
+      resources += workDirectory / "matrix_5.py",
+      hostFiles += (dataLoc, "/data"),
+      //outputFiles += ("dataCollection.csv", resultFile),
+      (inputs, outputs) += ( subjectPath,  subjectFilename ),
+      
+  ) 
+  
+val env = SLURMEnvironment("jgao", "predict1.doc.ic.ac.uk", threads = 4)
+
+val explo = ExplorationTask( 
+  (subjectPath in File(dataLoc).paths(filter="sub-.*\\.tsv", recursive = true) withName subjectFilename) //x
+)
+
+
+explo -< (container3 on env)
