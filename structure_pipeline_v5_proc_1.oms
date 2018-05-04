@@ -40,7 +40,7 @@ val s = CSVSampling("/vol/biomedic/users/jgao/dhcp/data/dataCollection.csv") set
   separator := ','
 )
 
-val env = SLURMEnvironment("jgao", "predict1.doc.ic.ac.uk")
+val env = SLURMEnvironment("jgao", "predict1.doc.ic.ac.uk",memory = 16 gigabytes)
 
 //explo -< (container3 hook CopyFileHook(resultFile, workDirectory / "results/${subjectFilename.dropRight(4)}.csv"))
 
