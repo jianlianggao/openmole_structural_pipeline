@@ -22,7 +22,7 @@ val container3 =
       
   ) 
   
-val env = SLURMEnvironment("jgao", "predict1.doc.ic.ac.uk", threads = 4)
+val env = SLURMEnvironment("jgao", "predict1.doc.ic.ac.uk")
 
 val explo = ExplorationTask( 
   (subjectPath in File(dataLoc).paths(filter="sub-.*\\.tsv", recursive = true) withName subjectFilename) //x

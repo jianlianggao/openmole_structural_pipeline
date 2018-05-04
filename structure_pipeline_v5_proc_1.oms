@@ -13,7 +13,7 @@ val T2para = Val[String]
 
 val threads = 8
 
-val dataLoc = "/data/jgao/work/openMOLE/data1"
+val dataLoc = "/vol/biomedic/users/jgao/dhcp/data"
 
 val container =
   ContainerTask(
@@ -29,7 +29,7 @@ val container =
   
 
 // extracting columns from .csv file
-val s = CSVSampling("/data/jgao/work/openMOLE/data1/dataCollection.csv") set (
+val s = CSVSampling("/vol/biomedic/users/jgao/dhcp/data/dataCollection.csv") set (
   columns += ("subject_ID", subjectID ),
   columns += ("session_ID", sessionID ),
   columns += ("scan_age", age),
