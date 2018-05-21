@@ -26,7 +26,7 @@ val container =
     //inputs += (age, subjectID, sessionID),
     //outputs += (age, subjectID, sessionID),  // eqv to (inputs, outputs) += ()
   )
-  
+
 
 // extracting columns from .csv file
 val s = CSVSampling("/vol/dhcp-reconstructed-images/UpdatedReconstructions/ReconstructionsRelease03/dataCollection.csv") set (
@@ -40,13 +40,21 @@ val s = CSVSampling("/vol/dhcp-reconstructed-images/UpdatedReconstructions/Recon
   separator := ','
 )
 
-val env = SLURMEnvironment("jgao", "biomedia03.doc.ic.ac.uk", sharedDirectory = "/vol/biomedic/users/jgao/.openmole", memory = 13 gigabytes, threads = 8)
+val env = SLURMEnvironment(
+    "jpassera",
+    "biomedia03.doc.ic.ac.uk",
+    sharedDirectory = "/vol/biomedic2/jpassera/openmole_data", // where to copy the input data on the workers (docker image layers, ...)
+    storageSharedLocally = true, // optim option to create symlinks on the workers instead of copying over ssh since OM instance is on the same shared FS
+    workDirectory = "/data/openmole_workdir", // where to deploy the container and the jobs files 
+    memory = 13 gigabytes,
+    threads = 8
+)
 
 //explo -< (container3 hook CopyFileHook(resultFile, workDirectory / "results/${subjectFilename.dropRight(4)}.csv"))
 
 // DirectSampling works
 DirectSampling (
-  sampling = s,
+  sampling = s sample 10, // for tests use a subset with take N or sample N
   evaluation = container on env
 )
 
