@@ -1,4 +1,4 @@
-//for running the pipeline linne on cluster using Condor;
+//for running the pipeline linne on cluster using Slurm;
 import java.nio.file.Path
 
 val subjectPath = Val[Path]
