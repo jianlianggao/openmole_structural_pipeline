@@ -12,10 +12,10 @@ val container3 =
   ContainerTask(
     "python:3.6-stretch",
     //s"""bash -c "python -c 'print("$${subjectPath}")';  python -c 'print("$${T1WniftiPath}")'; python -c 'print("$${T2WniftiPath}")'; python matrix.py $${subjectPath}";  """,
-    """ python matrix_5_1.py /data/${subjectFilename.dropRight(13)}/${subjectFilename} ${subjectFilename.dropRight(13)} /data/dataCollection.csv """,
+    """ python matrix_5_1_1.py /data/${subjectFilename.dropRight(13)}/${subjectFilename} ${subjectFilename.dropRight(13)} /data/dataCollection201812.csv """,
     install = Seq("pip install numpy")
   )  set (
-      resources += workDirectory / "matrix_5_1.py",
+      resources += workDirectory / "matrix_5_1_1.py",
       hostFiles += (dataLoc, "/data"),
       //outputFiles += ("dataCollection.csv", resultFile),
       (inputs, outputs) += ( subjectPath,  subjectFilename ),
